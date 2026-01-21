@@ -1,115 +1,164 @@
-import React from "react";
-import { ArrowRight, PlayCircle } from "lucide-react";
+import React from 'react';
 // eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
+import {
+  LayoutDashboard,
+  FolderGit2,
+  BookOpen,
+  GraduationCap,
+  Bell,
+  FileText,
+  Award,
+  Quote,
+  FileCode,
+  Table,
+  ArrowRight,
+  PlayCircle,
+  TrendingUp
+} from 'lucide-react';
+import { dashboardVariants, glowVariants, itemVariants } from '../../lib';
 
-export const Hero = () => {
+const Hero = () => {
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+
+
+
+ 
   return (
-    <div className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-      {/* Background Gradients */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-500/10 rounded-full blur-[120px] mix-blend-screen animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] mix-blend-screen" />
-      </div>
+    <section className="max-w-4xl mx-auto px-6 text-center flex flex-col items-center md:mt-20 mt-10">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 mb-8 hover:bg-white/10 transition-colors cursor-default"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <span className="flex h-2 w-2 relative">
+          <motion.span
+            className="absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"
+            animate={{ scale: [1, 2, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500" />
+        </span>
+        <span className="text-xs text-zinc-300 font-medium tracking-tight">V2.0: Thesis Architect engine live</span>
+      </motion.div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/50 border border-slate-700/50 mb-8 backdrop-blur-sm"
-        >
-          <span className="flex h-2 w-2 relative">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-          </span>
-          <span className="text-xs font-medium text-slate-300">
-            New: Gemini 2.5 Analysis Engine
-          </span>
-        </motion.div>
-
-        {/* Heading */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="w-full"
+      >
         <motion.h1
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-8"
+          variants={itemVariants}
+          className="text-5xl md:text-7xl font-semibold tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white via-white to-zinc-500 mb-6 pb-2"
         >
-          Your Resume, <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-purple-400 to-pink-400">
-            Reimagined by AI
-          </span>
+          Engineer your degree. <br />
+          <span className="text-zinc-500">Without the burnout.</span>
         </motion.h1>
 
-        {/* Subtext */}
         <motion.p
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="mt-4 text-xl text-slate-400 max-w-2xl mx-auto mb-10"
+          variants={itemVariants}
+          className="text-lg text-zinc-400 max-w-xl mx-auto mb-10 leading-relaxed font-light"
         >
-          Stop guessing what recruiters want. Get instant, AI-powered feedback
-          to optimize your resume, beat the ATS, and land 3x more interviews.
+          The intelligent workspace for university students. Generate project structures, synthesize research citations, and refactor code instantly.
         </motion.p>
 
-        {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto justify-center"
         >
-          <a
-            href="#demo"
-            className="group bg-white text-slate-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-2"
+          <motion.button
+            whileHover={{ scale: 1.05, backgroundColor: "#f4f4f5" }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full sm:w-auto h-10 px-6 rounded-md bg-white text-black text-sm font-medium hover:bg-zinc-200 transition-all flex items-center justify-center gap-2"
           >
-            Analyze My Resume
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </a>
+            Start Building <ArrowRight size={16} />
+          </motion.button>
 
-          <button className="px-8 py-4 rounded-full font-semibold text-white border border-slate-700 hover:bg-slate-800 transition-all flex items-center gap-2">
-            <PlayCircle className="w-5 h-5" />
-            Watch Demo
-          </button>
+          <motion.button
+            whileHover={{ scale: 1.05, backgroundColor: "#27272a" }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full sm:w-auto h-10 px-6 rounded-md border
+             border-zinc-700 bg-zinc-900/50 text-zinc-300 text-sm font-medium
+              hover:bg-zinc-800 transition-all flex items-center justify-center gap-2"
+          >
+            <PlayCircle size={16} /> Watch Demo
+          </motion.button>
+
         </motion.div>
 
-        {/* Dashboard Mockup */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.93 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.25 }}
-          className="mt-20 relative mx-auto max-w-5xl"
-        >
-          <div className="rounded-xl bg-slate-900 border border-slate-800 p-2 shadow-2xl shadow-brand-900/50">
-            <div className="rounded-lg overflow-hidden bg-slate-950 aspect-[16/9] relative flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 opacity-50" />
+      </motion.div>
 
-              {/* Abstract Dashboard */}
-              <div className="relative z-10 grid grid-cols-12 gap-4 w-3/4 h-3/4 opacity-80">
-                <div className="col-span-4 bg-slate-800/50 rounded-lg animate-pulse" />
-                <div className="col-span-8 grid grid-rows-3 gap-4">
-                  <div className="row-span-1 bg-slate-800/50 rounded-lg" />
-                  <div className="row-span-2 bg-slate-800/30 rounded-lg border border-slate-700/50" />
-                </div>
-              </div>
+      {/* UI Mockup: Dashboard */}
+   <motion.div
+  variants={dashboardVariants}
+  initial="hidden"
+  animate="visible"
+  whileHover="hover"
+  className="mt-20 w-full max-w-4xl relative group"
+>
+  {/* Glow Shadow */}
+  <motion.div
+    variants={glowVariants}
+    initial="hidden"
+    animate="visible"
+    className="absolute -inset-1 rounded-xl
+      shadow-[0_0_40px_10px_rgba(99,102,241,0.35),
+              0_0_60px_20px_rgba(168,85,247,0.25),
+              0_0_80px_30px_rgba(236,72,153,0.2)]
+      opacity-25 group-hover:opacity-50
+      transition duration-700"
+  />
 
-              {/* Label */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-slate-500 font-mono text-sm">
-                  Dashboard UI Preview
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+  <img
+    src="/academia.ai.png"
+    alt=""
+    className="w-full h-full relative rounded-xl"
+  />
+</motion.div>
 
-      </div>
-    </div>
+      
+      {/* Brands */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 0.8 }}
+        className="mt-20 pt-10 border-t border-white/5 w-full"
+      >
+        <p className="text-xs text-zinc-500 mb-6 font-medium">TRUSTED BY STUDENTS FROM</p>
+        <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-40 grayscale">
+          {["MIT", "STANFORD", "OXFORD", "CAMBRIDGE"].map((uni, index) => (
+            <motion.div
+              key={uni}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 0.4, y: 0 }}
+              transition={{ delay: 2.2 + index * 0.1, duration: 0.5 }}
+              whileHover={{ opacity: 0.8, scale: 1.1 }}
+              className="flex items-center gap-2 text-lg font-semibold tracking-tighter text-white"
+            >
+              <GraduationCap size={20} />
+              {uni}
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+    </section>
   );
 };
+
+export default Hero;

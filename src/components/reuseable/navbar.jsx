@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Cpu } from 'lucide-react';
+import { Box, Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { SignedIn, SignedOut } from '@clerk/clerk-react';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,53 +16,111 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-white/5' : 'bg-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-2">
-            <div className="bg-brand-500 p-1.5 rounded-lg">
-                <Cpu className="h-6 w-6 text-white" />
+    <nav
+      className={`fixed top-0 w-full z-50 border-b border-white/5 backdrop-blur-md transition-colors ${
+        isScrolled ? 'bg-zinc-950/90' : 'bg-zinc-950/70'
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+
+        {/* Logo */}
+     <div className="flex items-center gap-2">
+  
+            <div className="w-5 h-5 rounded bg-zinc-800 border border-white/10 flex items-center justify-center">
+         <Box size={14} className="text-white" />
             </div>
-            <span className="font-bold text-xl tracking-tight text-white">ResuMate<span className="text-brand-400">.ai</span></span>
-          </div>
-          
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#features" className="hover:text-brand-400 text-slate-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">Features</a>
-              <a href="#how-it-works" className="hover:text-brand-400 text-slate-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">How it Works</a>
-              <a href="#testimonials" className="hover:text-brand-400 text-slate-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">Testimonials</a>
-              <a href="#pricing" className="hover:text-brand-400 text-slate-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">Pricing</a>
-            </div>
+            
+            <span className="text-sm font-semibold tracking-tight text-zinc-300">
+              ACADEMIA.AI
+            </span>
           </div>
 
-          <div className="hidden md:block">
-            <button className="bg-white text-slate-900 px-5 py-2 rounded-full font-semibold text-sm hover:bg-slate-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-              Get Started
-            </button>
-          </div>
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-8">
+          <a href="#features" className="text-xs text-zinc-400 hover:text-white transition-colors">
+            Features
+          </a>
+          <a href="#process" className="text-xs text-zinc-400 hover:text-white transition-colors">
+            Process
+          </a>
+          <a href="#pricing" className="text-xs text-zinc-400 hover:text-white transition-colors">
+            Pricing
+          </a>
+        </div>
 
-          <div className="-mr-2 flex md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none"
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
+        {/* Right Buttons */}
+        <div className="flex items-center gap-4">
+          <Link
+            to='/auth'
+            className="text-xs text-zinc-400 hover:text-white transition-colors hidden sm:block"
+          >
+            Log in
+          </Link>
+          <a
+            href="#"
+            className="bg-white text-black text-xs font-medium px-3 py-1.5 rounded hover:bg-zinc-200 transition-colors"
+          >
+            Get Started
+          </a>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-1 text-zinc-400 hover:text-white transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-slate-900 border-b border-slate-800">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="#features" className="hover:bg-slate-800 text-white block px-3 py-2 rounded-md text-base font-medium">Features</a>
-            <a href="#how-it-works" className="hover:bg-slate-800 text-white block px-3 py-2 rounded-md text-base font-medium">How it Works</a>
-            <a href="#testimonials" className="hover:bg-slate-800 text-white block px-3 py-2 rounded-md text-base font-medium">Testimonials</a>
-            <a href="#pricing" className="hover:bg-slate-800 text-white block px-3 py-2 rounded-md text-base font-medium">Pricing</a>
-            <button className="w-full text-left bg-brand-600 text-white block px-3 py-2 rounded-md text-base font-medium mt-4">
-                Get Started
-            </button>
+        <div className="md:hidden bg-zinc-950/95 border-t border-white/5">
+          <div className="flex flex-col px-6 py-4 gap-4">
+            <a
+              href="#features"
+              className="text-xs text-zinc-400 hover:text-white transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Features
+            </a>
+            <a
+              href="#process"
+              className="text-xs text-zinc-400 hover:text-white transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Process
+            </a>
+            <a
+              href="#pricing"
+              className="text-xs text-zinc-400 hover:text-white transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Pricing
+            </a>
+
+            <SignedIn
+>            <a
+              href="/auth"
+              className="text-xs text-zinc-400 hover:text-white transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Log in
+            </a>
+
+            </SignedIn>
+
+<SignedOut>
+            <a
+              href="/auth"
+              className="bg-white text-black text-xs font-medium px-3 py-1.5 rounded hover:bg-zinc-200 transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Get Started
+            </a>
+
+            </SignedOut>
+
           </div>
         </div>
       )}

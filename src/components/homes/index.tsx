@@ -1,13 +1,12 @@
 import React from 'react'
 import { Navbar } from '../reuseable/navbar'
-import { Footer } from '../reuseable/footer'
-import { Hero } from './hero'
-import { ResumeAnalyzer } from './resumeAnalyzer'
-import { Features } from './features'
+import  Footer  from '../reuseable/footer'
+import Features  from './features.jsx'
 import Testimonials from './testimonials'
-import Pricing from './pricing'
+// import Pricing from './pricing'
 import FAQ from './faq'
-import SocialProof from './socilaProf'
+import Hero from './hero'
+import HowItWorks from './howItWorks.jsx'
 
 
 const HomeIndex = () => {
@@ -18,12 +17,12 @@ const HomeIndex = () => {
       <h1>HomeIndex</h1>
       <main>
         <Hero />
-         <SocialProof/>
-        {/* <HowItWorks />  */}
+    
+    
          <Features />
-        <ResumeAnalyzer/>
+      <HowItWorks  />
         <Testimonials />
-        <Pricing />
+        {/* <Pricing /> */}
         <FAQ/> 
       </main>
       <Footer />
