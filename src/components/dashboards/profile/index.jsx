@@ -13,7 +13,7 @@ const ProfileIndex = () => {
   const navigate = useNavigate();
   const dropDownRef = useRef(null);
 
-  /* -------------------- AUTH -------------------- */
+ 
   const { isLoaded, isSignedIn, signOut } = useClerkAuth();
   const { user: clerkUser } = useUser();
 
@@ -24,12 +24,12 @@ const ProfileIndex = () => {
   const user = isSignedIn ? clerkUser : appUser;
   const isAuthenticated = isSignedIn || !!appUser;
 
-  /* -------------------- UI STATE -------------------- */
+
   const [showDropDown, setShowDropDown] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
-  /* -------------------- REDIRECT -------------------- */
+
   useEffect(() => {
     if (!isLoaded || isPending) return;
 
@@ -38,7 +38,7 @@ const ProfileIndex = () => {
     }
   }, [isLoaded, isPending, isAuthenticated, navigate]);
 
-  /* -------------------- DROPDOWN CLOSE -------------------- */
+
   useEffect(() => {
     const handleMouseLeave = (e) => {
       if (
@@ -102,7 +102,7 @@ const ProfileIndex = () => {
           </span>
         </div>
 
-        {/* ================= DROPDOWN ================= */}
+     
         <div className="relative" ref={dropDownRef}>
 
           <button

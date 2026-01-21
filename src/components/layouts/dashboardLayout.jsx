@@ -14,7 +14,7 @@ const DashboardLayout = ({ children }) => {
   const { user: clerkUser } = useUser();
 const { data: appUser, isPending } = useUserQuery()
 
-  const {  mutate } = useLogoutMutation();
+  const {  mutate } = useLogou
   
 
   const [showDropDown, setShowDropDown] = useState(false);
@@ -34,10 +34,10 @@ const { data: appUser, isPending } = useUserQuery()
         navigate("/auth", { replace: true });
  }
 
-  console.log('clerkUser:', clerkUser);
-  console.log('Loggedin User:', appUser);
+  // console.log('clerkUser:', clerkUser);
+  // console.log('Loggedin User:', appUser);
 
-  console.log('isAuthenticatedUser:', isAuthenticatedUser);
+  // console.log('isAuthenticatedUser:', isAuthenticatedUser);
 
   useEffect(() => {
     const handleMouseLeave = (e) => {
@@ -88,11 +88,10 @@ const { data: appUser, isPending } = useUserQuery()
       } else {
       mutate();
         setShowDropDown(false);
-        // if (!result?.success) return;
       }
 
       toast.success("Logout successful");
-      navigate("/login");
+      navigate("/auth");
     } catch (err) {
       toast.error("Logout failed");
       console.error(err);
