@@ -118,7 +118,7 @@ const { data: appUser, isPending } = useUserQuery()
         {/* Logo */}
         <div className="flex items-center gap-2">
           <div className="w-5 h-5 rounded bg-zinc-800 border border-white/10 flex items-center justify-center">
-            <Box size={12} className="text-white" />
+            <Box size={14} className="text-white" />
           </div>
           <span className="text-xs font-semibold tracking-tight text-zinc-300">
             ACADEMIA.AI
@@ -127,6 +127,7 @@ const { data: appUser, isPending } = useUserQuery()
 
         {/* DropDown */}
         <div className="relative">
+
           <button onClick={handleDropDown} className="flex gap-1 items-center">
             <div
               className="w-12 h-12 rounded-full flex items-center 
@@ -151,8 +152,11 @@ const { data: appUser, isPending } = useUserQuery()
                  to-pink-500 filter blur-lg opacity-30 -z-10"></div>
 
                 {/* Dropdown content */}
-                <div className="relative z-10 bg-zinc-800 shadow-md rounded-md p-3 flex flex-col gap-2">
+                <div className="relative z-500 bg-zinc-800 shadow-md 
+                rounded-md p-3 flex flex-col gap-2">
+
                   <div className="flex flex-col  gap-1 cursor-pointer rounded-md p-1">
+
                     <span>{user?.fullName}</span>
                     <span className="text-xs">
          {isSignedIn ? clerkUser?.emailAddresses[0]?.emailAddress : user?.email}
@@ -177,6 +181,7 @@ const { data: appUser, isPending } = useUserQuery()
             </div>
           )}
         </div>
+
       </header>
 
       <main className="">{children}</main>

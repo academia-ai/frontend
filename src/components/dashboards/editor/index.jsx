@@ -202,7 +202,7 @@ function sanitizeProjectForUpdate(project) {
           whileTap={{ scale: 0.95 }}
           className="w-full sm:w-auto h-10 px-6 rounded-md bg-white text-black cursor-pointer
           text-sm font-medium hover:bg-zinc-200 transition-all
-          flex items-center justify-center gap-2"
+          hidden items-center justify-center gap-2"
         >
           <FileInput  size={15}  color='black' />
           Export
