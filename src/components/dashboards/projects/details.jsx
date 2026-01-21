@@ -152,7 +152,7 @@ async function handleExportPDF(id) {
 
       <DropdownMenu
         aria-label="Export actions"
-        className="bg-zinc-900 text-zinc-300 rounded-md min-w-[160px]"
+        className="bg-zinc-900 text-zinc-300 rounded-md min-w-40"
       >
         <DropdownItem onClick={() => handleExportPDF(data._id)}
          key="pdf" className="flex items-center gap-2">
