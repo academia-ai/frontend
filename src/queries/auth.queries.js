@@ -19,10 +19,10 @@ export const useLoginMutation = () => {
        navigate('/dashboard')
   },
     
-    onError: (error) => {
-      toast.error(
-        error?.response?.data?.message || 'Login failed'
-      )
+    onError: () => {
+      // toast.error(
+      //   error?.response?.data?.message || 'Login failed'
+      // )
     },
   })
 }
@@ -41,10 +41,10 @@ export const useRegisterMutation = () => {
       navigate('/auth')
     },
 
-    onError: (error) => {
-      toast.error(
-        error?.response?.data?.message || 'Registration failed'
-      )
+    onError: () => {
+      // toast.error(
+      //   error?.response?.data?.message || 'Registration failed'
+      // )
     },
     })
 }
