@@ -18,7 +18,7 @@ defaultOptions: {
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
       <BrowserRouter>
     <QueryClientProvider client={queryClient}>
       <ClerkProviderWithRouter>
@@ -28,5 +28,5 @@ createRoot(document.getElementById('root')).render(
       </ClerkProviderWithRouter>
        </QueryClientProvider>
     </BrowserRouter>
-  </StrictMode>,
+  // </StrictMode>,
 )

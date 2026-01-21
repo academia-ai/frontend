@@ -1,29 +1,35 @@
-import React, { useState } from 'react'
+
 import Login from './login'
 // import Signups from './signup'
 
-import {  SignedIn, SignIn, SignUp,  useSignIn } from '@clerk/clerk-react'
+import {  SignedIn, SignIn, SignUp,  useSignIn, useUser } from '@clerk/clerk-react'
 import Register from './register'
 import { Chrome, Github } from 'lucide-react'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 
 
 const AuthIndex = () => {
-  const [isLogin, setIsLogin] = useState(true)
+    const [isLogin, setIsLogin] = useState(true)
 
+const { signIn, isLoaded } = useSignIn()
+  const { isSignedIn } = useUser()
+  const navigate = useNavigate()
 
+ useEffect(() => {
+    if (isSignedIn) navigate('/dashboard')
+  }, [isSignedIn])
 
-  const { signIn, isLoaded } = useSignIn();
+  const handleGoogleAuth = async () => {
+    if (!isLoaded || isSignedIn) return 
 
-const handleGoogleAuth = async () => {
-  if (!isLoaded) return;
-
-  await signIn.authenticateWithRedirect({
-    strategy: "oauth_google",
-    redirectUrl: `${window.location.origin}/sso-callback`,
-    redirectUrlComplete: `${window.location.origin}/dashboard`,
-  });
-};
+    await signIn.authenticateWithRedirect({
+      strategy: 'oauth_google',
+      redirectUrl: '/sso-callback',
+    })
+  }
 
 
 
@@ -32,7 +38,8 @@ const handleGoogleAuth = async () => {
 
   return (
 
-    <section id="auth" className="page-section max-w-sm mx-auto min-h-[90vh] flex items-center h-screen
+    <section id="auth" 
+    className="page-section max-w-sm mx-auto min-h-[90vh] flex items-center 
      justify-center bg-black pt-10 pb-20">
       <div className="w-full">
         <div className="text-center mb-8">

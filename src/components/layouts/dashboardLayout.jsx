@@ -12,15 +12,16 @@ const DashboardLayout = ({ children }) => {
 
   const { isLoaded, isSignedIn, signOut } = useClerkAuth();
   const { user: clerkUser } = useUser();
+const { data: appUser, isPending } = useUserQuery()
 
   const {  mutate } = useLogoutMutation();
+  
 
   const [showDropDown, setShowDropDown] = useState(false);
   const dropDownRef = useRef(null);
 
-  const token  = !!localStorage.getItem('token')
+  // const token  = !!localStorage.getItem('token')
 
-const { data: appUser, isPending } = useUserQuery(token)
 
 
 
@@ -33,8 +34,9 @@ const { data: appUser, isPending } = useUserQuery(token)
         navigate("/auth", { replace: true });
  }
 
-  // console.log('clerkUser:', clerkUser);
-  // console.log('Loggedin User:', appUser);
+  console.log('clerkUser:', clerkUser);
+  console.log('Loggedin User:', appUser);
+
   console.log('isAuthenticatedUser:', isAuthenticatedUser);
 
   useEffect(() => {
