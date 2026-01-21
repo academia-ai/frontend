@@ -14,7 +14,7 @@ const DashboardLayout = ({ children }) => {
   const { user: clerkUser } = useUser();
 const { data: appUser, isPending } = useUserQuery()
 
-  const {  mutate } = useLogou
+  const {  mutate } = useLogoutMutation()
   
 
   const [showDropDown, setShowDropDown] = useState(false);
