@@ -26,7 +26,8 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="py-24 bg-slate-950">
+    <section id="faq"
+     className="py-24 bg-slate-950">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

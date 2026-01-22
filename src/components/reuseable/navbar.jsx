@@ -89,14 +89,14 @@ export const Navbar = () => {
               className="text-xs text-zinc-400 hover:text-white transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Process
+          How it works
             </a>
             <a
-              href="#pricing"
+              href="#faq"
               className="text-xs text-zinc-400 hover:text-white transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Pricing
+              Faq
             </a>
 
             <SignedIn
